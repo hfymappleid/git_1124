@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>学习小助手</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <h1>学习小助手</h1>
+      <p class="sub">口算练习，顺手记下要做的事</p>
+      <nav class="nav" aria-label="功能切换">
+        <button type="button" class="nav-btn on" data-view="math">口算练习v2</button>
+        <button type="button" class="nav-btn" data-view="todo">待办清单</button>
+      </nav>
+    </header>
+
+    <section id="view-math" data-view-panel="math">
+      <div class="modes" id="modes">
+        <button type="button" class="chip on" data-mode="mix">加减混合</button>
+        <button type="button" class="chip" data-mode="add">只做加法</button>
+        <button type="button" class="chip" data-mode="sub">只做减法</button>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b id="done">0</b><span>已做</span></div>
+        <div class="stat"><b id="right">0</b><span>答对</span></div>
+        <div class="stat"><b id="rate">—</b><span>正确率</span></div>
+      </div>
+
+      <div class="card">
+        <div class="q" id="question">? + ? = ?</div>
+        <form class="input-row" id="form">
+          <input id="answer" type="number" inputmode="numeric" autocomplete="off" placeholder="?" aria-label="答案">
+          <button class="go" id="submit" type="submit">确定</button>
+        </form>
+        <div class="feedback" id="feedback" role="status"></div>
+        <div class="row">
+          <button class="ghost" id="next" type="button">下一题</button>
+          <button class="ghost" id="reset" type="button">重新开始</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-todo" data-view-panel="todo" hidden>
+      <form class="todo-add card" id="todo-form">
+        <label class="todo-label" for="todo-input">新的待办</label>
+        <div class="input-row">
+          <input id="todo-input" type="text" maxlength="80" placeholder="例如：复习 10 以内加法" autocomplete="off">
+          <button class="go" type="submit">添加</button>
+        </div>
+      </form>
+
+      <div class="todo-bar">
+        <span id="todo-left">0 项未完成</span>
+        <div class="filters" id="filters" role="tablist" aria-label="筛选">
+          <button type="button" class="chip on" data-filter="all">全部</button>
+          <button type="button" class="chip" data-filter="active">未完成</button>
+          <button type="button" class="chip" data-filter="done">已完成</button>
+        </div>
+      </div>
+
+      <ul class="todo-list" id="todo-list"></ul>
+      <p class="empty" id="todo-empty" hidden>这一栏还是空的</p>
+
+      <div class="row">
+        <button class="ghost" id="todo-clear" type="button">清除已完成</button>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
